@@ -68,3 +68,24 @@ ansible-galaxy install git+https://github.com/GoogleCloudPlatform/google-cloud-o
 ansible-playbook example_playbook.yaml -i inventory.gcp.yaml
 ```
 
+## Use the instruction below if you don't use IAP
+
+If you create a GCP VM which has direct connection to the target VMs  
+You don't need to use IAP.
+
+Here are the steps to use direct SSH connections.
+
+Use the files in `ansible-without-iap`
+
+```
+# add your ssh private key to ssh-agent
+# This will be generate the first time you use IAP
+# or generate the key pair and manually copy the public key to the target server
+eval `ssh-agent -s`
+ssh-add -l
+ssh-add ~/.ssh/google_compute_engine
+
+ansible-inventory --graph
+ansible-galaxy install git+https://github.com/GoogleCloudPlatform/google-cloud-ops-agents-ansible.git
+ansible-playbook example_playbook.yaml
+```
