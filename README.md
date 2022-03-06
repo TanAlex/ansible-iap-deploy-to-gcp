@@ -89,3 +89,11 @@ ansible-inventory --graph
 ansible-galaxy install git+https://github.com/GoogleCloudPlatform/google-cloud-ops-agents-ansible.git
 ansible-playbook example_playbook.yaml
 ```
+
+NOTE:  
+If host is in a different zone then change the inventory.gcp.yaml to use private IP  
+This is because GCP FQDN includes zone  
+```
+  ansible_host: networkInterfaces[0].networkIP
+  # ansible_host: name
+```
