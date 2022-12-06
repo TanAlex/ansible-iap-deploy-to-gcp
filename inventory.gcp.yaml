@@ -4,7 +4,7 @@ auth_kind: serviceaccount
 service_account_file: key-file
 projects:
   # This value will be subsituted by sed command
-  - th-ttanlab-lab-f7cf07
+  - th-ttantest-lab-b9edf5
 keyed_groups:
   # Create groups from GCE labels
   - key: labels
